@@ -1,5 +1,7 @@
 package ui;
 
+import com.sun.javafx.scene.KeyboardShortcutsHandler;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +13,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -113,11 +117,11 @@ public class Calculator extends Application {
 		btnBack.setMinSize(50, 50);
 		btnSqrt.setMinSize(50, 50);
 		btnPower.setMinSize(50, 50);
-		textField1.setMinSize(200, 50);
-		textField2.setMinSize(200, 50);
-		textField3.setMinSize(200, 50);
-		textField4.setMinSize(200, 50);
-		textField5.setMinSize(200, 50);
+		textField1.setMinSize(300, 50);
+		textField2.setMinSize(300, 50);
+		textField3.setMinSize(300, 50);
+		textField4.setMinSize(300, 50);
+		textField5.setMinSize(300, 50);
 
 
 		//Set the style of almost everything
@@ -148,6 +152,7 @@ public class Calculator extends Application {
 		textField4.setStyle(style);
 		textField5.setStyle(style);
 
+		
 		//Apart from the MenuBar I wrote before, this is the main part.
 		GridPane gridPane = new GridPane();
 		//The format is (Node child, int columnIndex, int rowIndex), quite strange...
@@ -180,7 +185,17 @@ public class Calculator extends Application {
 		gridPane.add(btnPoint, 2, 4);
 		gridPane.add(btnPower, 3, 4);
 		gridPane.add(btnEqual, 4, 4);
-
+		
+		
+//		btn0.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//			@Override
+//			public void handle(KeyEvent keyEvent) {
+//				if (keyEvent.getCode()==KeyCode.DIGIT0) {
+//					System.out.println("OK");
+//				}
+//			}
+//		});
+		
 		//btn1 to btnPoint are of same structure. Read one, you'll get it all.
 		//So, I'll just write one comment $_$
 		btn1.setOnAction(new EventHandler<ActionEvent>() {
@@ -435,6 +450,7 @@ public class Calculator extends Application {
 
 			@Override
 			public void handle(ActionEvent event) {
+				
 				if (flag%4==0) {
 					//If there already had a result, then move the result in textField4 to textField1 and clear others.
 					flag=1;//Use the next if statement
@@ -623,10 +639,11 @@ public class Calculator extends Application {
 		vBox.getChildren().add(gridPane);
 		vBox.setStyle(style);
 
-		//Just don't drag it, okay? Once I set it to unable to resize but there are some errors in LinuxGUI.
-		Scene scene = new Scene(vBox, 400, 280);//200+4*50=400  30+5*50=280
+		//There are some errors on Ubuntu MATE.
+		Scene scene = new Scene(vBox, 500, 280);//300+4*50=500  30+5*50=280
 		primaryStage.setTitle("ZiZhuo Calculator");
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 
 	}
