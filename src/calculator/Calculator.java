@@ -1,6 +1,5 @@
 package ui;
 
-import com.sun.javafx.scene.KeyboardShortcutsHandler;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,8 +12,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -50,7 +47,10 @@ public class Calculator extends Application {
 	/**
 	 * The css style
 	 */
-	public String style = "-fx-background-color: aqua; -fx-text-fill: black;-fx-font-size:20px;";
+	public String style = "-fx-background-color: aqua; -fx-text-fill: black;-fx-font-size:18px;-fx-border-color:black;"
+			+ "-fx-border-radius:15;-fx-border-style:solid;-fx-smooth:true;";
+	public String style2 = "-fx-background-color: aqua; -fx-text-fill: black;-fx-font-size:18px;"
+			+ "-fx-border-style:none;-fx-smooth:true;";
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -145,12 +145,12 @@ public class Calculator extends Application {
 		btnEqual.setStyle(style);
 		btnC.setStyle(style);
 		btnBack.setStyle(style);
-		menuBar.setStyle(style);
-		textField1.setStyle(style);
-		textField2.setStyle(style);
-		textField3.setStyle(style);
-		textField4.setStyle(style);
-		textField5.setStyle(style);
+		menuBar.setStyle(style2);
+		textField1.setStyle(style2);
+		textField2.setStyle(style2);
+		textField3.setStyle(style2);
+		textField4.setStyle(style2);
+		textField5.setStyle(style2);
 
 		
 		//Apart from the MenuBar I wrote before, this is the main part.
@@ -637,7 +637,7 @@ public class Calculator extends Application {
 		//VerticalBox
 		VBox vBox = new VBox(menuBar);
 		vBox.getChildren().add(gridPane);
-		vBox.setStyle(style);
+		vBox.setStyle(style2);
 
 		//There are some errors on Ubuntu MATE.
 		Scene scene = new Scene(vBox, 500, 280);//300+4*50=500  30+5*50=280
